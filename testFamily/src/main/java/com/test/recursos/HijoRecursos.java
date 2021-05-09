@@ -6,12 +6,10 @@
 package com.test.recursos;
 
 import com.google.gson.Gson;
-import com.test.dao.interfaces.PersonInterface;
+import com.test.models.Hijo;
 import com.test.models.Persona;
+import com.test.service.HijoService;
 import com.test.service.PersonaService;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -27,26 +25,16 @@ import javax.ws.rs.core.Response;
  *
  * @author Jorge
  */
-@Path("/personas")
-public class personaRecurso {
-    
-    
-    @GET
-    @Path("test")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getPeronas(){
-        Persona persona = new Persona(1,"jorge","1/02/2020","Hombre");
-        String json = new Gson().toJson(persona);
-        return Response.ok(json,MediaType.APPLICATION_JSON).build();
-    }
+@Path("/hijos")
+public class HijoRecursos {
     
         
     @GET
     @Path("all")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getPersons(){
-        List<Persona> persons = new PersonaService().getListPersons();
-        String json = new Gson().toJson(persons);
+    public Response getHijos(){
+        List<Hijo> hijos = new HijoService().getListHijos();
+        String json = new Gson().toJson(hijos);
         return Response.ok(json,MediaType.APPLICATION_JSON).build();
         
     }
@@ -54,9 +42,9 @@ public class personaRecurso {
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getPerson(@PathParam("id") int id){
-        Persona person = new PersonaService().getPerson(id);
-        String json = new Gson().toJson(person);
+    public Response getHijo(@PathParam("id") int id){
+        Hijo hijo = new HijoService().getHijo(id);
+        String json = new Gson().toJson(hijo);
         return Response.ok(json,MediaType.APPLICATION_JSON).build();
         
     }
@@ -64,23 +52,19 @@ public class personaRecurso {
     @DELETE
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response deletePerson(@PathParam("id") int id){
-        String response = new PersonaService().deletePerson(id);
+    public Response deleteHijo(@PathParam("id") int id){
+        String response = new HijoService().deletePerson(id);
         return Response.ok(response,MediaType.APPLICATION_JSON).build(); 
     }
     
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response addPerson(Persona persona){
-        Persona response = new PersonaService().addPerson(persona);
+    public Response addHijo(Hijo hijo){
+        Hijo response = new HijoService().addPerson(hijo);
         return Response.ok(response,MediaType.APPLICATION_JSON).build(); 
     }
     
 
     
-
-    
-    
 }
-
