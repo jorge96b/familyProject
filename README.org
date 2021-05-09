@@ -1,0 +1,34 @@
+#+title: Módulo con ejemplos de JEE, JSF y JPA
+#+author: Miguel Piña
+#+date: [2017-03-30 jue 08:07]
+
+El presente repositorio es un ejemplo de una aplicacion para registrar familias
+en donde se implementa un API rest para consumir desde una aplicacion web
+para esto se utilizan las siguientes tecnologias:
+
+- Maven
+- Java Aplicatio
+- Angular
+- swagger 
+
+* Compilando y usando el proyecto
+
+** Preparando la base de datos
+
+Para poder usar todas las páginas de este proyecto, es necesario crear dos tablas
+esto se hace de la siguiente forma:
+
+** Compilando el proyecto
+
+Este proyecto maven se debe compilar con el sigueinte comando
+
+#+begin_src sh
+mvn clean install
+#+end_src
+
+Eso se encarga de compilarlo e instalarlo en el repositorio local de Maven.
+
+** Ejecutando el proyecto
+
+Para ejecutar el proyecto se debe correr un servidor glassfish
+
